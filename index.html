@@ -2,39 +2,192 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<title>My Documentation Hub</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sherullah</title>
 <style>
-    body { margin:0; font-family:Arial; display:flex; flex-direction:column; height:100vh; }
-    header, footer { background:#333; color:#fff; padding:15px; text-align:center; }
-    nav a { color:white; margin:0 10px; cursor:pointer; text-decoration:none; }
-    nav a:hover { text-decoration:underline; }
-    iframe { width:100%; height:100%; border:none; }
-    main { flex:1; }
+    * { box-sizing: border-box; }
+
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        background: #bfbfbf;
+    }
+
+    /************** HEADER **************/
+    header {
+        background: #111;
+        color: #fff;
+    }
+
+    .topbar {
+        display: flex;
+        align-items: center;
+        height: 44px;
+        background: #111;
+    }
+
+    .scroll-btn {
+        width: 36px;
+        border: none;
+        background: #111;
+        color: #fff;
+        font-size: 18px;
+        cursor: pointer;
+        user-select: none;
+    }
+
+    .scroll-btn:disabled {
+        opacity: 0.3;
+        cursor: default;
+    }
+
+    #topNav {
+        flex: 1;
+        overflow-x: auto;
+        white-space: nowrap;
+        scrollbar-width: none;
+    }
+    #topNav::-webkit-scrollbar {
+        display: none;
+    }
+
+    .nav-link {
+        display: inline-block;
+        padding: 10px 14px;
+        color: #f1f1f1;
+        text-decoration: none;
+        font-size: 14px;
+    }
+
+    .nav-link:hover {
+        background: #333; /* light black */
+        text-decoration: none;
+    }
+
+    .nav-link.active {
+        background: #2c2e2d; /* green */
+        color: #fff;
+    }
+
+    /************** MAIN (IFRAME) **************/
+    main {
+        flex: 1;
+        background: #bfbfbf;
+    }
+
+    iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+    }
+
+    /************** FOOTER **************/
+    footer {
+        background: #111;
+        color: #ccc;
+        text-align: center;
+        padding: 12px;
+        font-size: 14px;
+    }
+
+    footer a {
+        color: #ccc;
+        text-decoration: none;
+        margin: 0 10px;
+    }
+
+    footer a:hover {
+        text-decoration: underline;
+    }
 </style>
 </head>
-
 <body>
 
 <header>
-    <nav>
-        <a onclick="loadDocs('https://sherullah.com/contents-blog/flutter/index.html')">Flutter</a>
-        
-    </nav>
+    <div class="topbar">
+
+        <!-- LEFT ARROW -->
+        <button class="scroll-btn" id="leftBtn">&#10094;</button>
+
+        <!-- NAV LINKS -->
+        <nav id="topNav">
+            <a class="nav-link active" data-doc="https://sherullah.com/contents-blog/flutter/index.html">FLUTTER</a>
+            <a class="nav-link" data-doc="django-docs/index.html">DJANGO</a>
+            <a class="nav-link" data-doc="python-docs/index.html">PYTHON</a>
+            <a class="nav-link" data-doc="sql-docs/index.html">SQL</a>
+            <a class="nav-link" data-doc="html-docs/index.html">HTML</a>
+            <a class="nav-link" data-doc="css-docs/index.html">CSS</a>
+            <a class="nav-link" data-doc="js-docs/index.html">JAVASCRIPT</a>
+            <a class="nav-link" data-doc="security-docs/index.html">SECURITY</a>
+            <a class="nav-link" data-doc="ai-docs/index.html">AI / ML</a>
+            <a class="nav-link" data-doc="devops-docs/index.html">DEVOPS</a>
+            <a class="nav-link" data-doc="linux-docs/index.html">LINUX</a>
+            <a class="nav-link" data-doc="c-docs/index.html">C</a>
+            <a class="nav-link" data-doc="cpp-docs/index.html">C++</a>
+            <a class="nav-link" data-doc="react-docs/index.html">REACT</a>
+            <!-- you can add unlimited links -->
+        </nav>
+
+        <!-- RIGHT ARROW -->
+        <button class="scroll-btn" id="rightBtn">&#10095;</button>
+    </div>
 </header>
 
 <main>
-    <iframe id="docFrame" src=""></iframe>
+    <iframe id="docFrame"></iframe>
 </main>
 
 <footer>
-    <a href="privacy.html" style="color:white;">Privacy Policy</a> |  <a href="terms.html" style="color:white;">Terms</a> | <a href="disclaimer.html" style="color:white;">Disclaimer</a>
+    <span>&copy; © 2025 Sherullah – Education Resource Center</span> |
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="terms.html">Terms</a>
+    <a href="disclaimer.html">Disclaimer</a>
 </footer>
 
 <script>
-    function loadDocs(page) {
-        document.getElementById("docFrame").src = page;
+    const iframe      = document.getElementById('docFrame');
+    const nav         = document.getElementById('topNav');
+    const links       = document.querySelectorAll('.nav-link');
+    const leftBtn     = document.getElementById('leftBtn');
+    const rightBtn    = document.getElementById('rightBtn');
+
+    /* Load FIRST tab automatically */
+    window.addEventListener('DOMContentLoaded', () => {
+        const active = document.querySelector('.nav-link.active');
+        iframe.src = active.dataset.doc;
+        updateButtons();
+    });
+
+    /* When a nav link is clicked */
+    links.forEach(link => {
+        link.addEventListener('click', () => {
+            iframe.src = link.dataset.doc;
+
+            links.forEach(l => l.classList.remove('active'));
+            link.classList.add('active');
+        });
+    });
+
+    /* Scroll arrows */
+    function scrollMenu(delta) {
+        nav.scrollBy({ left: delta, behavior: 'smooth' });
     }
+
+    leftBtn.addEventListener('click', () => scrollMenu(-150));
+    rightBtn.addEventListener('click', () => scrollMenu(150));
+
+    /* Enable/Disable scroll arrows */
+    function updateButtons() {
+        const maxScroll = nav.scrollWidth - nav.clientWidth;
+        leftBtn.disabled  = nav.scrollLeft <= 0;
+        rightBtn.disabled = nav.scrollLeft >= maxScroll - 1;
+    }
+
+    nav.addEventListener('scroll', updateButtons);
+    window.addEventListener('resize', updateButtons);
 </script>
 
 </body>
