@@ -110,6 +110,17 @@
         text-decoration: none;
         font-size: 14px;
     }
+   .footer-scroll {
+  overflow-x: auto;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch; /* smooth scroll on iOS */
+}
+
+.footer-scroll a,
+.footer-scroll span {
+  display: inline-block; /* ensures items stay in one line */
+  padding-right: 16px;
+}
 </style>
 </head>
 <body>
@@ -156,11 +167,13 @@
 </main>
 
 <footer>
+    <div class="footer-scroll">
     <span>&copy; 2025 Sherullah – Education Resource Center</span> |
     <a class="btn-link" href="privacy.html">Privacy Policy</a>
     <a class="btn-link" href="terms.html">Terms</a>
     <a class="btn-link" href="disclaimer.html">Disclaimer</a>
     <a class="btn-link" href="affiliate-disclosure.html">Affiliate Disclosure</a>
+    </div>
 </footer>
 
 <script>
