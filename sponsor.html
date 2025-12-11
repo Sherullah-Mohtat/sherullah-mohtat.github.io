@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Sponsor This Project</title>
+
+  <!-- Optional: Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --card-bg: #ffffff;
+      --text-main: #111827;
+      --text-muted: #6b7280;
+      --accent: #2563eb;
+      --border: #e5e7eb;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text-main);
+    }
+
+    .sponsor-page {
+      max-width: 900px;
+      margin: 48px auto;
+      padding: 0 16px 48px;
+    }
+
+    .page-header {
+      margin-bottom: 32px;
+      text-align: left;
+    }
+
+    .page-kicker {
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    .page-header h1 {
+      font-size: 32px;
+      margin: 0 0 12px;
+    }
+
+    .page-header p {
+      margin: 0;
+      max-width: 700px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 2.2fr) minmax(0, 1.8fr);
+      gap: 24px;
+    }
+
+    @media (max-width: 768px) {
+      .cards-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 20px 22px;
+      border: 1px solid var(--border);
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+    }
+
+    .card h2 {
+      margin-top: 0;
+      margin-bottom: 12px;
+      font-size: 20px;
+    }
+
+    .card p {
+      margin: 0 0 10px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .card ul {
+      margin: 8px 0 0 18px;
+      padding: 0;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 500;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: #e0edff;
+      color: #1d4ed8;
+      margin-bottom: 10px;
+    }
+
+    .paypal-section {
+      margin-top: 20px;
+    }
+
+    .btn-paypal {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 11px 22px;
+      border-radius: 999px;
+      border: none;
+      background: #003087;
+      color: #ffffff;
+      font-weight: 600;
+      font-size: 15px;
+      text-decoration: none;
+      cursor: pointer;
+      margin-top: 6px;
+    }
+
+    .btn-paypal img {
+      height: 20px;
+      display: block;
+    }
+
+    .btn-paypal:hover {
+      filter: brightness(1.05);
+    }
+
+    .meta {
+      margin-top: 24px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .meta strong {
+      color: var(--text-main);
+    }
+
+    .footer-note {
+      margin-top: 40px;
+      text-align: left;
+      font-size: 13px;
+      color: #6b7280;
+    }
+
+    .footer-note a:hover {
+      text-decoration: underline;
+      color: #2563eb;
+    }
+    .card {
+  display: flex;
+  flex-direction: column;
+}
+
+.donate-container {
+  margin-top: auto;      /* Push to bottom */
+  text-align: center;    /* Center the button */
+  padding-top: 20px;     /* Space above donate button */
+}
+  </style>
+</head>
+<body>
+  <main class="sponsor-page">
+    <header class="page-header">
+      <div class="page-kicker">Support the mission</div>
+      <h1>Sponsor This Project</h1>
+      <p>
+        I’m building this platform to provide <strong>project-based educational content</strong>.
+        Every tutorial is connected to a real project that learners can build and reuse in their own apps and
+        portfolios. The goal is to make it easier for people to learn by doing and give them ready-to-use
+        examples they can adapt for their own work.
+      </p>
+    </header>
+
+    <div class="cards-grid">
+      <!-- Left column -->
+      <section class="card">
+        <h2>Why Your Sponsorship Matters</h2>
+        <p>Your support helps me:</p>
+        <ul>
+          <li>Create more high-quality project tutorials</li>
+          <li>Cover hosting, domain, and tool costs</li>
+          <li>Keep all content free and accessible</li>
+          <li>Add new technologies and real-world examples</li>
+        </ul>
+
+        <!-- 1 link button --><!--
+        <div class="paypal-section">
+          <div class="badge">Direct support via PayPal</div>
+          <p>If this project has helped you, you can support it directly using PayPal:</p>
+          <a href="https://www.paypal.com/donate/?business=Q22TZCCK8GFTC&no_recurring=0&item_name=Thank+you+for+supporting+my+educational+project%21+Your+contribution+helps+me+create+more+project-based+tutorials.&currency_code=USD" target="_blank" class="btn-paypal">
+            <img src="https://www.paypalobjects.com/webstatic/icon/pp258.png" alt="PayPal">
+            Donate with PayPal
+          </a>
+        </div>
+        -->
+        <!-- 2 Donate button -->
+         <div class="donate-container">
+         <form action="https://www.paypal.com/donate" method="post" target="_top">
+          <input type="hidden" name="business" value="Q22TZCCK8GFTC" />
+          <input type="hidden" name="no_recurring" value="0" />
+          <input type="hidden" name="item_name" value="Thank you for supporting my educational project! Your contribution helps me create more project-based tutorials." />
+          <input type="hidden" name="currency_code" value="USD" />
+          <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
+          <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
+         </form>
+         </div>
+        </section>
+
+      <!-- Right column -->
+      <section class="card">
+        <h2>What Sponsors Receive</h2>
+        <p>As a thank you, sponsors may receive:</p>
+        <ul>
+          <li>Name or company logo listed on this page (optional)</li>
+          <li>Early access to upcoming projects and tutorials</li>
+          <li>Ability to suggest topics or project ideas</li>
+          <li>Special acknowledgments in select tutorials</li>
+        </ul>
+
+        <div class="meta">
+          <p><strong>Transparency</strong></p>
+          <p>
+           Sponsorship funds are used exclusively for hosting, tools, and the time required to research, build, and document new educational projects.
+          </p>
+        </div>
+      </section>
+    </div>
+
+    <div class="footer-note">
+      Have a question or a custom sponsorship idea?
+      <a href="https://sherullah.home.blog/">Get in touch</a>.
+    </div>
+  </main>
+</body>
+</html>
