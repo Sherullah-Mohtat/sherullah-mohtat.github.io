@@ -4,123 +4,183 @@
 <meta charset="UTF-8">
 <title>Sherullah</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <style>
-    * { box-sizing: border-box; }
+/* =========================
+   Base
+   ========================= */
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
 
-    body {
-        margin: 0;
-        font-family: Arial, sans-serif;
-        display: flex;
-        flex-direction: column;
-        height: 100vh;
-        background: #ffffff;
-    }
+/* =========================
+   Header (sticky + horizontal scroll)
+   ========================= */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: #111;
+  color: #fff;
+}
 
-    /************** HEADER **************/
-    header {
-        background: #111;
-        color: #fff;
-    }
+.topbar {
+  display: flex;
+  align-items: center;
+  height: 44px;
+  background: #111;
+}
 
-    .topbar {
-        display: flex;
-        align-items: center;
-        height: 56px;
-        background: #111;
-    }
+.scroll-btn {
+  width: 40px;
+  height: 44px;
+  border: none;
+  background: #111;
+  color: #fff;
+  font-size: 18px;
+  cursor: pointer;
+  user-select: none;
+}
 
-    .scroll-btn {
-        width: 36px;
-        border: none;
-        background: #111;
-        color: #fff;
-        font-size: 18px;
-        cursor: pointer;
-        user-select: none;
-    }
+.scroll-btn:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
 
-    .scroll-btn:disabled {
-        opacity: 0.3;
-        cursor: default;
-    }
+#topNav {
+  flex: 1;
+  overflow-x: auto;
+  white-space: nowrap;
+  scrollbar-width: none; /* Firefox */
+  -webkit-overflow-scrolling: touch;
+}
 
-    #topNav {
-        flex: 1;
-        overflow-x: auto;
-        white-space: nowrap;
-        scrollbar-width: none;
-    }
-    #topNav::-webkit-scrollbar {
-        display: none;
-    }
+#topNav::-webkit-scrollbar { display: none; }
 
-    .nav-link {
-        display: inline-block;
-        padding: 10px 14px;
-        color: #f1f1f1;
-        text-decoration: none;
-        font-size: 14px;
-    }
+.nav-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 44px;
+  padding: 0 14px;
+  color: #f1f1f1;
+  text-decoration: none;
+  font-size: 14px;
+}
 
-    .nav-link:hover {
-        background: #333; /* light black */
-        text-decoration: none;
-    }
+.nav-link:hover {
+  background: #313131;
+  color: #ffffff;
+  text-decoration: none;
+}
 
-    .nav-link.active {
-        background: #2c2e2d; /* green */
-        color: #fff;
-    }
+.nav-link.active {
+  background: #2c2e2d;
+  color: #fff;
+}
 
-    /************** MAIN (IFRAME) **************/
-    main {
-        flex: 1;
-        background: #bfbfbf;
-    }
+/* =========================
+   Main
+   ========================= */
+main {
+  flex: 1;
+  background: #111; /* page background behind cards */
+  padding: 22px 16px;
+}
 
-    iframe {
-        width: 100%;
-        height: 100%;
-        border: none;
-    }
+/* Cards grid (mobile-first) */
+.cardcontainer {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr; /* mobile: list */
+  gap: 24px;
+}
 
-    /************** FOOTER **************/
-    footer {
-        background: #111;
-        color: #ccc;
-        text-align: center;
-        padding: 10px;
-        font-size: 14px;
-    }
+@media (min-width: 700px) {
+  .cardcontainer { grid-template-columns: repeat(2, 1fr); }
+}
 
-    footer a {
-        color: #ccc;
-        text-decoration: none;
-        margin: 0 10px;
-    }
+@media (min-width: 1100px) {
+  .cardcontainer { grid-template-columns: repeat(4, 1fr); }
+}
 
-    footer a:hover {
-        text-decoration: underline;
-    }
-   /**************new css for footer*******/
-   .btn-link {
-        display: inline-block;
-        padding: 10px 10px;
-        color: #f1f1f1;
-        text-decoration: none;
-        font-size: 14px;
-    }
-   .footer-scroll {
-        overflow-x: auto;
-        white-space: nowrap;
-        -webkit-overflow-scrolling: touch; /* smooth scroll on iOS */
-    }
+.card {
+  background: #f2f2f2;
+  border-radius: 22px;
+  padding: 44px 22px;
+  text-align: center;
+}
 
-   .footer-scroll a,
-   .footer-scroll span {
-         display: inline-block; /* ensures items stay in one line */
-         padding-right: 16px;
-    }
+.card h1 {
+  margin: 0 0 10px;
+  font-size: 40px;
+  color: #000;
+}
+
+.card p {
+  margin: 0 0 26px;
+  font-size: 16px;
+  color: #333;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 150px;
+  padding: 12px 28px;
+  background: #111;
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+  border-radius: 999px;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.btn:hover {
+  background: #000;
+  transform: scale(1.04);
+}
+
+/* =========================
+   Footer (bottom + horizontal scroll)
+   ========================= */
+footer {
+  background: #111;
+  color: #ccc;
+}
+
+.footer-scroll {
+  overflow-x: auto;
+  white-space: nowrap;
+  scrollbar-width: none; /* Firefox */
+  -webkit-overflow-scrolling: touch;
+  padding: 12px 16px;
+}
+
+.footer-scroll::-webkit-scrollbar { display: none; }
+
+.footer-scroll span,
+.footer-scroll a {
+  display: inline-block;
+  color: #ccc;
+  text-decoration: none;
+  font-size: 14px;
+  padding-right: 18px;
+}
+
+.footer-scroll a:hover {
+  text-decoration: underline;
+}
 </style>
 </head>
 <body>
@@ -135,26 +195,17 @@
         <nav id="topNav">
            <!-- <a class="nav-link active" data-doc="https://sherullah.com/contents-blog/flutter/index.html">FLUTTER</a> -->
             <a class="nav-link" href="https://sherullah.com/contents-blog/flutter/index.html">FLUTTER</a>
-            <a class="nav-link" data-doc="https://sherullah.com/contents-blog/dart/index.html">DART</a>
-            <a class="nav-link" data-doc="https://sherullah.com/contents-blog/django/index.html">DJANGO</a>
-            <a class="nav-link" data-doc="https://sherullah.com/contents-blog/python/index.html">PYTHON</a>
-            <a class="nav-link" data-doc="https://sherullah.com/contents-blog/postgresql/index.html">POSTGRESQL</a>
-            <a class="nav-link" data-doc="https://sherullah.com/contents-blog/mongodb/index.html">MONGODB</a>
-            <a class="nav-link" data-doc="https://sherullah.com/contents-blog/git/index.html">GIT</a>
-            <a class="nav-link" data-doc="https://sherullah.com/contents-blog/github/index.html">GitHub</a>
-            <a class="nav-link" data-doc="https://sherullah.com/contents-blog/docker/index.html">DOCKER</a>
-            <a class="nav-link" data-doc="https://sherullah.com/contents-blog/kubernetes/index.html">KUBERNETES</a>
-            <a class="nav-link" data-doc="https://sherullah.com/contents-blog/html/index.html">HTML</a>
-            <a class="nav-link" data-doc="https://sherullah.com/contents-blog/css/index.html">CSS</a>
-            <a class="nav-link" data-doc="https://sherullah.com/contents-blog/javascript/index.html">JAVASCRIPT</a>
-            <a class="nav-link" data-doc="https://sherullah.com/contents-blog/react/index.html">REACT</a>
-            <a class="nav-link" data-doc="https://sherullah.com/contents-blog/aiml/index.html">AI / ML</a>
-            <a class="nav-link" data-doc="https://sherullah.com/contents-blog/linux/index.html">LINUX</a>
-            <a class="nav-link" data-doc="https://sherullah.com/contents-blog/bash/index.html">BASH</a>
-            <a class="nav-link" data-doc="https://sherullah.com/contents-blog/rust/index.html">RUST</a>
-            <a class="nav-link" data-doc="https://sherullah.com/contents-blog/C/index.html">C</a>
-            <a class="nav-link" data-doc="https://sherullah.com/contents-blog/c++/index.html">C++</a>
-            <a class="nav-link" data-doc="https://sherullah.com/contents-blog/java/index.html">JAVA</a>
+            <a class="nav-link" href="https://sherullah.com/contents-blog/firebase/index.html">FIREBASE</a>
+            <a class="nav-link" href="https://sherullah.com/contents-blog/dart/index.html">DART</a>
+            <a class="nav-link" href="https://sherullah.com/contents-blog/django/index.html">DJANGO</a>
+            <a class="nav-link" href="https://sherullah.com/contents-blog/python/index.html">PYTHON</a>
+            <a class="nav-link" href="https://sherullah.com/contents-blog/postgresql/index.html">POSTGRESQL</a>
+            <a class="nav-link" href="https://sherullah.com/contents-blog/mongodb/index.html">MONGODB</a>
+            <a class="nav-link" href="https://sherullah.com/contents-blog/git/index.html">GIT</a>
+            <a class="nav-link" href="https://sherullah.com/contents-blog/github/index.html">GitHub</a>
+            <a class="nav-link" href="https://sherullah.com/contents-blog/docker/index.html">DOCKER</a>
+            <a class="nav-link" href="https://sherullah.com/contents-blog/kubernetes/index.html">KUBERNETES</a>
+            <a class="nav-link" href="https://sherullah.com/contents-blog/java/index.html">JAVA</a>
             <!-- you can add unlimited links -->
         </nav>
 
@@ -164,7 +215,97 @@
 </header>
 
 <main>
-    <iframe id="docFrame"></iframe>
+<!---------------------------------- cards section------------------------------->
+
+   <div class="cardcontainer">
+
+    <!-- Flutter Card -->
+    <div class="card">
+      <h1>FLUTTER</h1>
+      <p>A programming language</p>
+      <a href="https://sherullah.com/contents-blog/flutter/index.html" class="btn">Learn Flutter</a>
+    </div>
+
+    <!-- Firbase Card -->
+    <div class="card">
+      <h1>FIREBASE</h1>
+      <p>A programming language</p>
+      <a href="https://sherullah.com/contents-blog/firebase/index.html" class="btn">Learn Firebase</a>
+    </div>
+
+
+     <!-- Dart Card -->
+    <div class="card">
+      <h1>DART</h1>
+      <p>A programming language</p>
+      <a href="https://sherullah.com/contents-blog/dart/index.html" class="btn">Learn Dart</a>
+    </div>
+
+     <!-- Django Card -->
+    <div class="card">
+      <h1>DJANGO</h1>
+      <p>A programming language</p>
+      <a href="https://sherullah.com/contents-blog/django/index.html" class="btn">Learn Django</a>
+    </div>
+
+
+     <!-- Python Card -->
+    <div class="card">
+      <h1>PYTHON</h1>
+      <p>A programming language</p>
+      <a href="https://sherullah.com/contents-blog/flutter/index.html" class="btn">Learn Python</a>
+    </div>
+
+     <!-- Postgresql Card -->
+    <div class="card">
+      <h1>POSTGRESQL</h1>
+      <p>A programming language</p>
+      <a href="https://sherullah.com/contents-blog/postgresql/index.html" class="btn">Learn Postgresql</a>
+    </div>
+
+     <!-- Mongodb Card -->
+    <div class="card">
+      <h1>MONGODB</h1>
+      <p>A programming language</p>
+      <a href="https://sherullah.com/contents-blog/mongodb/index.html" class="btn">Learn Mongodb</a>
+    </div>
+
+     <!-- Git Card -->
+    <div class="card">
+      <h1>GIT</h1>
+      <p>A programming language</p>
+      <a href="https://sherullah.com/contents-blog/git/index.html" class="btn">Learn Git</a>
+    </div>
+
+    <!-- GitHub Card -->
+    <div class="card">
+      <h1>GITHUB</h1>
+      <p>A programming language</p>
+      <a href="https://sherullah.com/contents-blog/github/index.html" class="btn">Learn GitHub</a>
+    </div>
+
+    <!-- Docker Card -->
+    <div class="card">
+      <h1>DOCKER</h1>
+      <p>A programming language</p>
+      <a href="https://sherullah.com/contents-blog/docker/index.html" class="btn">Learn Docker</a>
+    </div>
+
+    <!-- Kubernetes Card -->
+    <div class="card">
+      <h1>KUBERNETES</h1>
+      <p>A programming language</p>
+      <a href="https://sherullah.com/contents-blog/kubernetes/index.html" class="btn">Learn Kubernetes</a>
+    </div>
+
+    <!-- Java Card -->
+    <div class="card">
+      <h1>JAVA</h1>
+      <p>A programming language</p>
+      <a href="https://sherullah.com/contents-blog/java/index.html" class="btn">Learn Java</a>
+    </div>
+  </div>
+<!---------------------------------- cards sectionEnd ------------------------------->
 </main>
 
 <footer>
@@ -180,46 +321,39 @@
 </footer>
 
 <script>
-    const iframe      = document.getElementById('docFrame');
-    const nav         = document.getElementById('topNav');
-    const links       = document.querySelectorAll('.nav-link');
-    const leftBtn     = document.getElementById('leftBtn');
-    const rightBtn    = document.getElementById('rightBtn');
+  const nav = document.getElementById('topNav');
+  const links = document.querySelectorAll('.nav-link');
+  const leftBtn = document.getElementById('leftBtn');
+  const rightBtn = document.getElementById('rightBtn');
 
-    /* Load FIRST tab automatically */
-    window.addEventListener('DOMContentLoaded', () => {
-        const active = document.querySelector('.nav-link.active');
-        iframe.src = active.dataset.doc;
-        updateButtons();
+  function scrollMenu(delta) {
+    nav.scrollBy({ left: delta, behavior: 'smooth' });
+  }
+
+  leftBtn.addEventListener('click', () => scrollMenu(-200));
+  rightBtn.addEventListener('click', () => scrollMenu(200));
+
+  function updateButtons() {
+    const maxScroll = nav.scrollWidth - nav.clientWidth;
+    leftBtn.disabled = nav.scrollLeft <= 0;
+    rightBtn.disabled = nav.scrollLeft >= maxScroll - 1;
+  }
+
+  nav.addEventListener('scroll', updateButtons);
+  window.addEventListener('resize', updateButtons);
+
+  // Active link highlight (based on current URL)
+  function setActiveLink() {
+    const current = window.location.href;
+    links.forEach(a => {
+      a.classList.toggle('active', current === a.href);
     });
+  }
 
-    /* When a nav link is clicked */
-    links.forEach(link => {
-        link.addEventListener('click', () => {
-            iframe.src = link.dataset.doc;
-
-            links.forEach(l => l.classList.remove('active'));
-            link.classList.add('active');
-        });
-    });
-
-    /* Scroll arrows */
-    function scrollMenu(delta) {
-        nav.scrollBy({ left: delta, behavior: 'smooth' });
-    }
-
-    leftBtn.addEventListener('click', () => scrollMenu(-150));
-    rightBtn.addEventListener('click', () => scrollMenu(150));
-
-    /* Enable/Disable scroll arrows */
-    function updateButtons() {
-        const maxScroll = nav.scrollWidth - nav.clientWidth;
-        leftBtn.disabled  = nav.scrollLeft <= 0;
-        rightBtn.disabled = nav.scrollLeft >= maxScroll - 1;
-    }
-
-    nav.addEventListener('scroll', updateButtons);
-    window.addEventListener('resize', updateButtons);
+  document.addEventListener('DOMContentLoaded', () => {
+    setActiveLink();
+    updateButtons();
+  });
 </script>
 
 </body>
