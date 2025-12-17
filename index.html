@@ -181,6 +181,13 @@ footer {
 .footer-scroll a:hover {
   text-decoration: underline;
 }
+/**********homeicon********/
+.nav-home img {
+  height: 25px;
+  width: 25px;
+  vertical-align: middle;
+  filter: brightness(0) invert(1); /* 🔥 black → white */
+}
 </style>
 </head>
 <body>
@@ -194,7 +201,7 @@ footer {
         <!-- NAV LINKS -->
         <nav id="topNav">
            <!-- <a class="nav-link active" data-doc="https://sherullah.com/contents-blog/flutter/index.html">FLUTTER</a> -->
-            <a class="nav-link" href="https://sherullah.com">HOME</a>
+            <a class="nav-link nav-home" href="https://sherullah.com" title="Home"><img src="images/home48.png" alt="Home"></a>
             <a class="nav-link" href="https://sherullah.com/contents-blog/flutter/index.html">FLUTTER</a>
             <a class="nav-link" href="https://sherullah.com/contents-blog/firebase/index.html">FIREBASE</a>
             <a class="nav-link" href="https://sherullah.com/contents-blog/dart/index.html">DART</a>
