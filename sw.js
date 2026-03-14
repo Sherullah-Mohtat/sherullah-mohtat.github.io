@@ -3,6 +3,7 @@ const URLS_TO_CACHE = [
   "/",
   "/index.html",
   "/manifest.json",
+  "/images/sherullah-icon-180.png",
   "/images/site-logo-64.png",
   "/images/sherullah-icon-192.png",
   "/images/sherullah-icon-512.png"
