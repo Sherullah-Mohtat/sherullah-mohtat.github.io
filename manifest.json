@@ -1,25 +1,26 @@
 {
   "name": "Sherullah",
   "short_name": "Sherullah",
+  "description": "Sherullah personal technology platform covering DevOps, Flutter, Django, PostgreSQL, and software engineering learning resources.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
   "orientation": "portrait",
   "background_color": "#ffffff",
   "theme_color": "#000000",
-  "description": "Sherullah personal tech platform for DevOps, Flutter, Django, and PostgreSQL learning.",
+  "lang": "en",
   "icons": [
     {
-      "src": "/images/sherullah-icon-192.png",
+      "src": "/images/sherullah-android-192.png",
       "sizes": "192x192",
       "type": "image/png",
-      "purpose": "any"
+      "purpose": "any maskable"
     },
     {
-      "src": "/images/sherullah-icon-512.png",
+      "src": "/images/sherullah-android-512.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "any"
+      "purpose": "any maskable"
     }
   ]
 }
