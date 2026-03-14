@@ -3,10 +3,28 @@
 <head>
 <meta charset="UTF-8">
 <title>Sherullah</title>
+ <!--
  <link rel="icon" href="/images/site-logo-64.png" type="image/png">
  <link rel="icon" sizes="32x32" href="/images/site-logo-64.png">
  <link rel="icon" sizes="16x16" href="/images/site-logo-64.png">
  <link rel="apple-touch-icon" sizes="180x180" href="/images/site-logo-64.png">
+ -->
+  <!-- ============================================================================== -->
+  <!-- ===============================BookMark Releated code========================= -->
+  <!-- ============================================================================== -->
+        <link rel="icon" type="image/png" sizes="16x16" href="/images/site-logo-64.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/images/site-logo-64.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="/images/sherullah-icon-192.png">
+        
+        <link rel="manifest" href="/manifest.json">
+        
+        <meta name="theme-color" content="#000000">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-title" content="Sherullah">
+        <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <!-- ============================================================================== -->
+  <!-- ============================================================================== -->
+  <!-- ============================================================================== -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
@@ -382,6 +400,26 @@ footer {
   });
 </script>
 
+  <!-- ============================================================================== -->
+  <!-- ===============================BookMark Releated code========================= -->
+  <!-- ============================================================================== -->
+      <script>
+        if ("serviceWorker" in navigator) {
+          window.addEventListener("load", function () {
+            navigator.serviceWorker
+              .register("/sw.js")
+              .then(function (registration) {
+                console.log("Service Worker registered:", registration.scope);
+              })
+              .catch(function (error) {
+                console.log("Service Worker registration failed:", error);
+              });
+          });
+        }
+      </script>
+  <!-- ============================================================================== -->
+  <!-- ============================================================================== -->
+  <!-- ============================================================================== --> 
 </body>
 </html>
 
