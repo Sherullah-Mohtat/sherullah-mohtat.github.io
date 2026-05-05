@@ -170,19 +170,24 @@ main {
 }
 
 /* ========================================
-   Footer (bottom + horizontal scroll)
+   Footer (bottom + larger footer area)
    ======================================== */
 footer {
   background: #111;
   color: #ccc;
+  min-height: 80px;
+  display: flex;
+  align-items: center;
 }
 
 .footer-scroll {
+  width: 100%;
   overflow-x: auto;
   white-space: nowrap;
-  scrollbar-width: none; /* Firefox */
+  scrollbar-width: none;
   -webkit-overflow-scrolling: touch;
-  padding: 16px 20px;
+  padding: 20px 14px;
+  padding-top: 0;
 }
 
 .footer-scroll::-webkit-scrollbar { display: none; }
@@ -193,7 +198,8 @@ footer {
   color: #ccc;
   text-decoration: none;
   font-size: 16px;
-  padding-right: 18px;
+  padding-right: 22px;
+  line-height: 1.8;
 }
 
 .footer-scroll a:hover {
